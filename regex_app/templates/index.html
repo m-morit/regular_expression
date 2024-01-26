@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Form</title>
+</head>
+<body>
+    <form action="{% url 'regex_app:confirm' %}" method="POST">
+        {% csrf_token %}
+        <p>
+            <label for="name">Name:
+             <input type="text" name="name" required id="name" value="{{ name }}"><br>
+            </label>
+        </p>
+
+        <p style="color: red;">
+            {% if age == ""%}
+            Ageは1~3桁の半角数字のみ入力してください。
+            {% endif %}
+        </p>
+        <p>
+            <label for="age">Age:
+              <input type="text" name="age" id="age" value="{{age}}">
+            </label>
+        </p>
+
+        <p style="color: red;">
+            {% if zip_code == ""%}
+            Zip Zip_codeは全7桁の半角数字を入力してください。（ハイフンはあってもなくてもOK）
+            {% endif %}
+        </p>
+
+        <p>
+            <label for="zip Code">Zip_Code:
+                <input type="text" name="zip_Code" id="zip_Code" value="{{zip_code}}">
+            </label>
+        </p>
+        
+        <p style="color: red;">
+            {% if tel == ""%}
+            Cell phoneは全9桁の半角数字を入力してください。（ハイフンはあってもなくてもOK）
+            {% endif %}
+        </p>
+        <label for="tel">Tel:
+            <input type="text" name="tel" id="tele" value="{{tel}}">
+        </label>
+    
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
